@@ -66,7 +66,7 @@ class LoginView{
 	}
 
 	function getBody(){
-		if($this->model->isUserLoggedIn()){
+		if($this->model->isUserLoggedIn($_SERVER["HTTP_USER_AGENT"])){
 			$html = "<p>Inloggad</p>" . $this->getMessage() . $this->getLogoutForm();
 		} else {
 			$html = "<p>Ej inloggad</p>" . $this->getMessage() . $this->getLoginForm();

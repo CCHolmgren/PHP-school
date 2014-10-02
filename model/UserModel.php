@@ -28,8 +28,8 @@ class UserModel{
 		unset($_SESSION["useragent"]);*/
 		return;
 	}
-	function isUserLoggedIn(){
-		if(isset($_SESSION[self::$loggedin])){
+	function isUserLoggedIn($useragent){
+		if(isset($_SESSION[self::$loggedin]) && $_SESSION["useragent"] === $useragent){
 			return true;
 		}
 		return false;
