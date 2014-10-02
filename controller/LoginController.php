@@ -114,7 +114,7 @@ class LoginController{
 			//this is really ugly
 			if($this->canLoginWithCookie($_COOKIE[self::$usernameCookieName], $_COOKIE[self::$tokenCookieName])){
 				$this->loginWithCookie($_COOKIE[self::$usernameCookieName], $_COOKIE[self::$tokenCookieName]);
-				//session_regenerate_id(true);
+				session_regenerate_id(true);
 				$this->messages->save(self::$loginViaCookieSuccess);
 				return true;
 			} else {
@@ -179,7 +179,7 @@ class LoginController{
 	//Might save cookie if the user wants to be remembered
 	function login(){
 		$this->model->loginUser($_POST[self::$postUsernameLocation]);	
-		//session_regenerate_id(true);
+		session_regenerate_id(true);
 		if(!empty($_POST["rememberme"])){
 			$this->saveRememberMeCookie($_POST[self::$postUsernameLocation]);
 			$this->messages->save(self::$loggedInAndRemember);
